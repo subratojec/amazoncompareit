@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-container {
+      flex: 1 0 auto;
+      padding-top: 60px;
+      /* Adjust based on your navbar height */
+    }
+
+    .footer {
+      flex-shrink: 0;
+      /* background-color: #f8f9fa; */
+      padding: 20px 0;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container px-4">
+      <a class="navbar-brand" href="{% url 'index' %}">CompareIT</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <div class="container">
+      <h1>Effortless Amazon Product Comparisons</h1>
+      <div>
+        <ul>
+          <li>Struggling to decide between different Amazon products? CompareIT is here to help! We are a user-friendly
+            website specifically designed to make comparing Amazon products a breeze.</li>
+          <li>Simply enter the URLs of the Amazon products you're interested in, and CompareIT will do the rest. Our
+            powerful comparison tool will:
+            <ul>
+              <li><b>Extract key product details like price, title, features, and specifications</b></li>
+              <li><b>Display the information in a clear and organized side-by-side format.</b></li>
+              <li><b>Highlight key differences</b> to help you identify the product that best suits your needs and
+                budget.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h2>Benefits</h2>
+        <ul>
+          <li><b>Save Time & Effort:</b> Eliminate the need to visit multiple product pages and manually compare
+            details.
+          </li>
+          <li><b>Make Informed Decisions:</b> Gain a comprehensive understanding of each product's strengths and
+            weaknesses.</li>
+          <li><b>Find the Perfect Fit:</b> Easily identify the best value for your specific needs.</li>
+        </ul>
+      </div>
+      <hr>
+      <a href="{% url 'services' %}" class="btn btn-primary px-3 py-2" style="border-radius: 5px;">CompareIT</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="mb-4">
+            <a href="https://github.com/subratojec" class="text-dark mx-3" target="_blank">
+              <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/subrato-singh-13ab42211/" class="text-dark mx-3" target="_blank">
+              <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+
+          </div>
+          <hr class="my-4" style="width: 60%; margin-left: auto; margin-right: auto;">
+          <p class="text-muted mb-0">
+            © 2024 Copyright: Subrato Singh
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
