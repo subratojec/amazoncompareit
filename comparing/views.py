@@ -64,11 +64,13 @@ def services(request):
             url2 = form.cleaned_data['product2']
             comparison_result = compare_products(url1, url2)
         else:
-            form = ProductComparisonForm()
+            messages.error(request, 'Invalid form submission')
+            return redirect('services')  # Adjust to a valid URL
     else:
         form = ProductComparisonForm()
     
     return render(request, 'services.html', {'form': form, 'comparison_result': comparison_result})
+
 
 def setup_driver():
     options = Options()
