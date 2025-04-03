@@ -79,7 +79,7 @@ def setup_driver():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
 
-    service = Service(ChromeDriverManager().install())
+    service = Service(executable_path='/path/to/chromedriver')
     driver = webdriver.Chrome(service=service, options=options)
     return driver
 
