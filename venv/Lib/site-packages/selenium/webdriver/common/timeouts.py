@@ -68,9 +68,9 @@ class Timeouts:
             before throwing an error.
         """
 
-        self.implicit_wait = implicit_wait
-        self.page_load = page_load
-        self.script = script
+        self._implicit_wait = self._convert(implicit_wait)
+        self._page_load = self._convert(page_load)
+        self._script = self._convert(script)
 
     # Creating descriptor objects
     implicit_wait = _TimeoutsDescriptor("_implicit_wait")
@@ -78,15 +78,15 @@ class Timeouts:
 
     This does not set the value on the remote end.
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.implicit_wait`
     - Set
         - `self.implicit_wait` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `float`
     """
 
@@ -95,15 +95,15 @@ class Timeouts:
 
     This does not set the value on the remote end.
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.page_load`
     - Set
         - `self.page_load` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `float`
     """
 
@@ -113,14 +113,14 @@ class Timeouts:
 
     This does not set the value on the remote end.
 
-    Usage
+    Usage:
     ------
     - Get
         - `self.script`
     - Set
         - `self.script` = `value`
 
-    Parameters
+    Parameters:
     -----------
     `value`: `float`
     """

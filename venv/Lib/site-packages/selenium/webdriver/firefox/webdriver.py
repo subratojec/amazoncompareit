@@ -58,7 +58,7 @@ class WebDriver(RemoteWebDriver):
             options.binary_location = finder.get_browser_path()
             options.browser_version = None
 
-        self.service.path = finder.get_driver_path()
+        self.service.path = self.service.env_path() or finder.get_driver_path()
         self.service.start()
 
         executor = FirefoxRemoteConnection(
@@ -131,7 +131,7 @@ class WebDriver(RemoteWebDriver):
             path = os.path.normpath(path)
             # account for trailing slash that will be added by os.walk()
             path_root = len(path) + 1
-            with zipfile.ZipFile(fp, "w", zipfile.ZIP_DEFLATED) as zipped:
+            with zipfile.ZipFile(fp, "w", zipfile.ZIP_DEFLATED, strict_timestamps=False) as zipped:
                 for base, _, files in os.walk(path):
                     for fyle in files:
                         filename = os.path.join(base, fyle)

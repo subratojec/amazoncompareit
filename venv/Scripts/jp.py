@@ -1,4 +1,4 @@
-#!D:\programmes\compareIT\venv\Scripts\python.exe
+#!C:\Users\lenovo\Downloads\amazoncompareit\venv\Scripts\python.exe
 
 import sys
 import json

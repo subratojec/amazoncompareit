@@ -19,6 +19,7 @@
 from typing import TYPE_CHECKING
 from typing import List
 from typing import Optional
+from typing import Type
 
 if TYPE_CHECKING:
     from typing import Literal
@@ -125,10 +126,9 @@ class _PageOrientationDescriptor:
 class _ValidateTypeDescriptor:
     """Base Class Descriptor which validates type of any subclass attribute."""
 
-    expected_type = None
-
-    def __init__(self, name, expected_type):
+    def __init__(self, name, expected_type: Type):
         self.name = name
+        self.expected_type = expected_type
 
     def __get__(self, obj, cls):
         return obj._print_options.get(self.name, None)
@@ -142,19 +142,22 @@ class _ValidateTypeDescriptor:
 class _ValidateBackGround(_ValidateTypeDescriptor):
     """Expected type of background attribute."""
 
-    expected_type = bool
+    def __init__(self, name):
+        super().__init__(name, bool)
 
 
 class _ValidateShrinkToFit(_ValidateTypeDescriptor):
-    """Expected type of shirnk to fit attribute."""
+    """Expected type of shrink to fit attribute."""
 
-    expected_type = bool
+    def __init__(self, name):
+        super().__init__(name, bool)
 
 
 class _ValidatePageRanges(_ValidateTypeDescriptor):
-    """Excepted type of page ranges attribute."""
+    """Expected type of page ranges attribute."""
 
-    expected_type = list
+    def __init__(self, name):
+        super().__init__(name, list)
 
 
 class PrintOptions:
@@ -168,12 +171,12 @@ class PrintOptions:
     - Set
         - `self.page_height` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `float`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[float]`
     - Set
@@ -183,19 +186,19 @@ class PrintOptions:
     page_width = _PageSettingsDescriptor("width")
     """Gets and Sets page_width:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.page_width`
     - Set
         - `self.page_width` = `value`
 
-    Patameters
-    ----------
+    Parameters:
+    -----------
     `value`: `float`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[float]`
     - Set
@@ -205,19 +208,19 @@ class PrintOptions:
     margin_top = _MarginSettingsDescriptor("top")
     """Gets and Sets margin_top:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.margin_top`
     - Set
-        - `slef.margin_top` = `value`
+        - `self.margin_top` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `float`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[float]`
     - Set
@@ -227,19 +230,19 @@ class PrintOptions:
     margin_bottom = _MarginSettingsDescriptor("bottom")
     """Gets and Sets margin_bottom:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.margin_bottom`
     - Set
         - `self.margin_bottom` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `float`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[float]`
     - Set
@@ -249,19 +252,19 @@ class PrintOptions:
     margin_left = _MarginSettingsDescriptor("left")
     """Gets and Sets margin_left:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.margin_left`
-    -Set
+    - Set
         - `self.margin_left` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `float`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[float]`
     - Set
@@ -271,19 +274,19 @@ class PrintOptions:
     margin_right = _MarginSettingsDescriptor("right")
     """Gets and Sets margin_right:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.margin_right`
     - Set
         - `self.margin_right` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `float`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[float]`
     - Set
@@ -293,19 +296,19 @@ class PrintOptions:
     scale = _ScaleDescriptor("scale")
     """Gets and Sets scale:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.scale`
     - Set
         - `self.scale` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `float`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[float]`
     - Set
@@ -315,99 +318,126 @@ class PrintOptions:
     orientation = _PageOrientationDescriptor("orientation")
     """Gets and Sets orientation:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.orientation`
     - Set
         - `self.orientation` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `Orientation`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[Orientation]`
     - Set
         - `None`
     """
 
-    background = _ValidateBackGround("background", bool)
+    background = _ValidateBackGround("background")
     """Gets and Sets background:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
-        - `self.backgorund`
+        - `self.background`
     - Set
         - `self.background` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `bool`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[bool]`
     - Set
         - `None`
     """
 
-    shrink_to_fit = _ValidateShrinkToFit("shrinkToFit", bool)
+    shrink_to_fit = _ValidateShrinkToFit("shrinkToFit")
     """Gets and Sets shrink_to_fit:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.shrink_to_fit`
     - Set
         - `self.shrink_to_fit` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: `bool`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[bool]`
     - Set
         - `None`
     """
 
-    page_ranges = _ValidatePageRanges("pageRanges", list)
+    page_ranges = _ValidatePageRanges("pageRanges")
     """Gets and Sets page_ranges:
 
-    Usage
-    -----
+    Usage:
+    ------
     - Get
         - `self.page_ranges`
     - Set
         - `self.page_ranges` = `value`
 
-    Parameters
-    ----------
+    Parameters:
+    -----------
     `value`: ` List[str]`
 
-    Returns
-    -------
+    Returns:
+    --------
     - Get
         - `Optional[List[str]]`
     - Set
         - `None`
     """
+    # Reference for predefined page size constants: https://www.agooddaytoprint.com/page/paper-size-chart-faq
+    A4 = {"height": 29.7, "width": 21.0}  # size in cm
+    LEGAL = {"height": 35.56, "width": 21.59}  # size in cm
+    LETTER = {"height": 27.94, "width": 21.59}  # size in cm
+    TABLOID = {"height": 43.18, "width": 27.94}  # size in cm
 
     def __init__(self) -> None:
         self._print_options: _PrintOpts = {}
-        self._page: _PageOpts = {}
+        self._page: _PageOpts = {
+            "height": PrintOptions.A4["height"],
+            "width": PrintOptions.A4["width"],
+        }  # Default page size set to A4
         self._margin: _MarginOpts = {}
 
     def to_dict(self) -> _PrintOpts:
         """:Returns: A hash of print options configured."""
         return self._print_options
+
+    def set_page_size(self, page_size: dict) -> None:
+        """Sets the page size to predefined or custom dimensions.
+
+        Parameters:
+        -----------
+        page_size: dict
+        A dictionary containing `height` and `width` as keys with respective values.
+
+        Example:
+        --------
+        self.set_page_size(PageSize.A4)  # A4 predefined size
+        self.set_page_size({"height": 15.0, "width": 20.0})  # Custom size in cm
+        """
+        self._validate_num_property("height", page_size["height"])
+        self._validate_num_property("width", page_size["width"])
+        self._page["height"] = page_size["height"]
+        self._page["width"] = page_size["width"]
+        self._print_options["page"] = self._page
 
     def _validate_num_property(self, property_name: str, value: float) -> None:
         """Helper function to validate some of the properties."""
@@ -415,4 +445,4 @@ class PrintOptions:
             raise ValueError(f"{property_name} should be an integer or a float")
 
         if value < 0:
-            raise ValueError(f"{property_name} cannot be less then 0")
+            raise ValueError(f"{property_name} cannot be less than 0")
