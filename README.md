@@ -63,4 +63,4 @@ AmazonCompareIT is a modern Django web application that allows users to compare 
 This project is for educational/demo purposes.
 
 ---
-**Made with ❤️ by Subrato Singh & his partner Sanidhya Patel (CSS)** 
+**Made with ❤️ by Subrato Singh and Sanidhya Patel** 
