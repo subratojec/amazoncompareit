@@ -143,13 +143,3 @@ LOGIN_REDIRECT_URL = 'services'
 
 AUTH_USER_MODEL = 'comparing.CustomUser'
 
-
-# AWS_ACCESS_KEY_ID = 'AKIAW3MECVYS5MDLC47C '
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'amazoncompareit'
-# AWS_S3_SIGNATURE_NAME = 's3v4',
-# AWS_S3_REGION_NAME = ' ap-south-1'
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL =  None
-# AWS_S3_VERITY = True
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
